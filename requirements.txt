@@ -1,0 +1,7 @@
+# ─── Runtime Dependencies ─────────────────────────────────────────────────────
+# python-kata-solutions — Production requirements
+# Python >= 3.11 required
+
+# No external runtime dependencies.
+# All modules use Python standard library only, ensuring zero-dependency
+# deployment and maximum portability.

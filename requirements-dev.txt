@@ -1,0 +1,24 @@
+# ─── Development & Testing Dependencies ──────────────────────────────────────
+# python-kata-solutions — Dev/Test requirements
+# Install with: pip install -r requirements-dev.txt
+
+# Includes runtime dependencies
+-r requirements.txt
+
+# ── Testing ──────────────────────────────────────────────────────────────────
+pytest>=8.2.0               # Test runner
+pytest-cov>=5.0.0           # Coverage reporting
+pytest-mock>=3.14.0         # Mock utilities
+pytest-xdist>=3.6.1         # Parallel test execution
+
+# ── Code Quality ─────────────────────────────────────────────────────────────
+flake8>=7.1.0               # PEP 8 linter
+black>=24.4.2               # Code formatter
+isort>=5.13.2               # Import sorter
+mypy>=1.10.0                # Static type checker
+
+# ── Security ─────────────────────────────────────────────────────────────────
+bandit>=1.7.9               # Security linter
+
+# ── Documentation ────────────────────────────────────────────────────────────
+pydoc-markdown>=4.8.2       # Markdown doc generation (optional)

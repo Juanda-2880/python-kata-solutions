@@ -1,0 +1,70 @@
+# ─── Logging Configuration ────────────────────────────────────────────────────
+# Central logging setup for python-kata-solutions.
+# Loaded at application start via logging.config.dictConfig().
+#
+# Log levels: DEBUG < INFO < WARNING < ERROR < CRITICAL
+# For production, set root level to INFO or WARNING.
+
+version: 1
+disable_existing_loggers: false
+
+formatters:
+  standard:
+    format: "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+
+  detailed:
+    format: "%(asctime)s | %(levelname)-8s | %(name)s:%(lineno)d | %(funcName)s | %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+
+  json:
+    # Structured JSON logging for production/log aggregation systems
+    format: '{"timestamp": "%(asctime)s", "level": "%(levelname)s", "logger": "%(name)s", "line": %(lineno)d, "message": "%(message)s"}'
+    datefmt: "%Y-%m-%dT%H:%M:%S"
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: standard
+    stream: ext://sys.stdout
+
+  console_detailed:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: detailed
+    stream: ext://sys.stdout
+
+  file:
+    class: logging.handlers.RotatingFileHandler
+    level: INFO
+    formatter: detailed
+    filename: logs/kata_solutions.log
+    maxBytes: 10485760 # 10 MB
+    backupCount: 5
+    encoding: utf-8
+
+loggers:
+  kata_solutions:
+    level: DEBUG
+    handlers: [console]
+    propagate: false
+
+  kata_solutions.dictionary:
+    level: DEBUG
+    handlers: [console]
+    propagate: false
+
+  kata_solutions.shopping:
+    level: DEBUG
+    handlers: [console]
+    propagate: false
+
+  kata_solutions.nth_letter:
+    level: DEBUG
+    handlers: [console]
+    propagate: false
+
+root:
+  level: WARNING
+  handlers: [console]
